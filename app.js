@@ -4,16 +4,16 @@ const bodyParser = require('body-parser')
 
 const app = express();
 
-const adminRoutes = require('./routes/admin.js')
+const adminRoutes = require('./routes/admin.js');
+const shopRoutes = require('./routes/shop.js');
+const errorRoutes = require('./routes/error.js');
 
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended: false}));
 
 
+app.use(adminRoutes);
+app.use(shopRoutes);
+app.use(errorRoutes);
 
-app.use('/',(req, res, next)=> {
-
-    console.log("in the middleware!")
-    res.send('<h1>Hello from express!</h1>');
-})
 
 app.listen(3000);
