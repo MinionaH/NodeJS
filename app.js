@@ -4,6 +4,10 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+app.set('view engine', 'ejs');
+app.set('views','views')
+
+
 const adminData = require('./routes/admin.js');
 const shopRoutes = require('./routes/shop.js');
 const errorRoutes = require('./routes/error.js');
@@ -14,6 +18,8 @@ app.use(express.static(path.join(__dirname,'public')));
 
 app.use(adminData.routes);
 app.use(shopRoutes);
+
+
 app.use(errorRoutes); // Error Route should be the last one!
 
 
